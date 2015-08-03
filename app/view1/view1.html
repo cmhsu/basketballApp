@@ -1,7 +1,11 @@
 <p>This is the partial for view 1.</p>
 
-<form method="get" action="/stats">
-  <input type="text" name="name">
+<form method="get" ng-submit="getData(query)">
+  <input type="text" name="name" ng-model="query">
   <button type="submit">Submit</button>
 </form>
+
+
+{{ data }}
+
 
