@@ -66,7 +66,13 @@ angular.module('myApp.view1', ['ngRoute'])
       main.append('g')
         .attr('transform', 'translate(0,' + height + ')')
         .attr('class', 'main axis date')
+        .text('testing')
         .call(xAxis);
+
+      main.append("text")
+        .attr("transform", "translate(" + (width / 2) + " ," + (height + margin.bottom/1.5) + ")")
+        .style("text-anchor", "middle")
+        .text("Game Number");
 
       // draw the y axis
       var yAxis = d3.svg.axis()
@@ -77,6 +83,14 @@ angular.module('myApp.view1', ['ngRoute'])
         .attr('transform', 'translate(0,0)')
         .attr('class', 'main axis date')
         .call(yAxis);
+
+      main.append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", 0 - margin.left/5)
+        .attr("x",0 - (height / 2))
+        .attr("dy", "1em")
+        .style("text-anchor", "middle")
+        .text("Points Scored");
 
       var g = main.append("svg:g");
 
