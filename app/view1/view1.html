@@ -186,34 +186,6 @@
       </tr>
 
       <tr>
-        <td>2014-2015</td>
-        <td>{{teamStats.gP}}</td>
-        <td>{{teamStats.w}}</td>
-        <td>{{teamStats.l}}</td>
-        <td>{{teamStats.mIN}}</td>
-        <td>{{teamStats.fGM}}</td>
-        <td>{{teamStats.fGA}}</td>
-        <td>{{teamStats.fgPct}}</td>
-        <td>{{teamStats.fG3M}}</td>
-        <td>{{teamStats.fG3A}}</td>
-        <td>{{teamStats.fg3Pct}}</td>
-        <td>{{teamStats.fTM}}</td>
-        <td>{{teamStats.fTA}}</td>
-        <td>{{teamStats.ftPct}}</td>
-        <td>{{teamStats.oREB}}</td>
-        <td>{{teamStats.dREB}}</td>
-        <td>{{teamStats.rEB}}</td>
-        <td>{{teamStats.aST}}</td>
-        <td>{{teamStats.tOV}}</td>
-        <td>{{teamStats.sTL}}</td>
-        <td>{{teamStats.bLK}}</td>
-        <td>{{teamStats.bLKA}}</td>
-        <td>{{teamStats.pF}}</td>
-        <td>{{teamStats.plusMinus}}</td>
-        <td>{{teamStats.pTS}}</td>
-      </tr>
-
-      <tr>
         <td>2013-2014</td>
         <td>{{teamStatsTwo.gP}}</td>
         <td>{{teamStatsTwo.w}}</td>
@@ -241,6 +213,33 @@
         <td>{{teamStatsTwo.pTS}}</td>
       </tr>
 
+      <tr>
+        <td>2014-2015</td>
+        <td>{{teamStats.gP}}</td>
+        <td>{{teamStats.w}}</td>
+        <td>{{teamStats.l}}</td>
+        <td>{{teamStats.mIN}}</td>
+        <td>{{teamStats.fGM}}</td>
+        <td>{{teamStats.fGA}}</td>
+        <td>{{teamStats.fgPct}}</td>
+        <td>{{teamStats.fG3M}}</td>
+        <td>{{teamStats.fG3A}}</td>
+        <td>{{teamStats.fg3Pct}}</td>
+        <td>{{teamStats.fTM}}</td>
+        <td>{{teamStats.fTA}}</td>
+        <td>{{teamStats.ftPct}}</td>
+        <td>{{teamStats.oREB}}</td>
+        <td>{{teamStats.dREB}}</td>
+        <td>{{teamStats.rEB}}</td>
+        <td>{{teamStats.aST}}</td>
+        <td>{{teamStats.tOV}}</td>
+        <td>{{teamStats.sTL}}</td>
+        <td>{{teamStats.bLK}}</td>
+        <td>{{teamStats.bLKA}}</td>
+        <td>{{teamStats.pF}}</td>
+        <td>{{teamStats.plusMinus}}</td>
+        <td>{{teamStats.pTS}}</td>
+      </tr>
 
     </table>
 
@@ -251,7 +250,7 @@
     {{test}}
     <h3 class="chart-header">{{info.lastName}}: Points scored in last {{numGames}} games</h3>
     <form ng-submit="displayChart(data)" class="form-inline col-md-offset-4">
-      <input type="number" ng-model="numGames" class="form-control numGamesInput">
+      <input type="number" ng-model="numGames" class="form-control numGamesInput" ng-change="displayChart(data)">
       <button type="submit" class="btn btn-default">Change number of games</button>
     </form>
 
@@ -263,7 +262,7 @@
 
     <h3 class="chart-header">{{info.lastName}}: Plus-Minus in last {{numGamesTwo}} games</h3>
     <form ng-submit="displayChart(data, 'contentTwo')" class="form-inline col-md-offset-4">
-      <input type="number" ng-model="numGamesTwo" class="form-control numGamesInput">
+      <input type="number" ng-model="numGamesTwo" class="form-control numGamesInput" ng-change="displayChart(data, 'contentTwo')">
       <button type="submit" class="btn btn-default">Change number of games</button>
     </form>
 

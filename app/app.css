@@ -66,3 +66,8 @@ circle {
 .numGamesInput {
   margin-left: 25px;
 }
+
+h1 {
+  font-family: 'Amaranth', sans-serif;
+  font-size: 50px;
+}
