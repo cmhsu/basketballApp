@@ -1,12 +1,109 @@
-<p>This is the partial for view 1.</p>
+<!--TODO: put team picture. get team ID-->
+<div class="container col-md-8 col-md-offset-2">
+  <h1>BasketStat</h1>
 
-<form method="get" ng-submit="getData(query)">
-  <input type="text" name="name" ng-model="query" autofocus>
-  <button type="submit">Submit</button>
-</form>
+  <form method="get" ng-submit="getData(query)">
+    <div class="form-group">
+      <input type="text" class="form-control" name="name" ng-model="query" autofocus placeholder="Enter your favorite player here" size="30">
+      <button type="submit" class="btn btn-default">Submit</button>
+    </div>
+  </form>
 
-{{ info }}
-<br>
-{{ profile }}
-<img src="http://stats.nba.com/media/players/230x185/{{id}}.png" ng-show="idExists">
+  <div ng-show="idExists">
+    <!--<span>-->
+    <div>
+    <img src="http://stats.nba.com/media/players/230x185/{{id}}.png">
+    <!--<img src="http://stats.nba.com/teamStats.html?TeamID={{teamId}}&ls=iref:playerHeadshotStatsTeamPage">-->
+
+    <table class="table table-striped info">
+      <tr>
+        <td>Name: {{info.displayFirstLast}}</td>
+        <td>Birthday: {{info.bIRTHDATE.slice(0, 10)}}</td>
+      </tr>
+      <tr>
+        <td>Team Name: {{info.teamCity}} {{info.teamName}}</td>
+        <td>Country: {{info.cOUNTRY}}</td>
+      </tr>
+      <tr>
+        <td>Height: {{info.hEIGHT}}</td>
+        <td>Weight: {{info.wEIGHT}}</td>
+      </tr>
+      <tr>
+        <td>NBA Experience: {{info.seasonExp}} years ({{info.fromYear}}-{{info.toYear}})</td>
+        <td>Position: {{info.pOSITION}}</td>
+      </tr>
+      <tr>
+        <td>Roster Status: {{info.rOSTERSTATUS}}</td>
+        <td>School: {{info.sCHOOL}}</td>
+      </tr>
+    </table>
+
+      </div>
+      <!--</span>-->
+
+    <table class="table table-striped table-hover table-bordered">
+      <tr>
+        <td>Season</td>
+        <td>GP</td>
+        <td>W</td>
+        <td>L</td>
+        <td>MIN</td>
+        <td>FGM</td>
+        <td>FGA</td>
+        <td>FG%</td>
+        <td>3PM</td>
+        <td>3PA</td>
+        <td>3P%</td>
+        <td>FTM</td>
+        <td>FTA</td>
+        <td>FT%</td>
+        <td>ORB</td>
+        <td>DRB</td>
+        <td>TRB</td>
+        <td>AST</td>
+        <td>TOV</td>
+        <td>STL</td>
+        <td>BLK</td>
+        <td>BLKA</td>
+        <td>PF</td>
+        <td>+-</td>
+        <td>PTS</td>
+      </tr>
+
+      <tr>
+        <td>2014-2015</td>
+        <td>{{profile.gP}}</td>
+        <td>{{profile.w}}</td>
+        <td>{{profile.l}}</td>
+        <td>{{profile.mIN}}</td>
+        <td>{{profile.fGM}}</td>
+        <td>{{profile.fGA}}</td>
+        <td>{{profile.fgPct}}</td>
+        <td>{{profile.fG3M}}</td>
+        <td>{{profile.fG3A}}</td>
+        <td>{{profile.fg3Pct}}</td>
+        <td>{{profile.fTM}}</td>
+        <td>{{profile.fTA}}</td>
+        <td>{{profile.ftPct}}</td>
+        <td>{{profile.oREB}}</td>
+        <td>{{profile.dREB}}</td>
+        <td>{{profile.rEB}}</td>
+        <td>{{profile.aST}}</td>
+        <td>{{profile.tOV}}</td>
+        <td>{{profile.sTL}}</td>
+        <td>{{profile.bLK}}</td>
+        <td>{{profile.bLKA}}</td>
+        <td>{{profile.pF}}</td>
+        <td>{{profile.plusMinus}}</td>
+        <td>{{profile.pTS}}</td>
+
+      </tr>
+    </table>
+
+    <!--{{ info }}-->
+    <!--<br><br>-->
+    <!--{{ profile }}-->
+  </div>
+
+</div>
 

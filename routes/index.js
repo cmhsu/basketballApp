@@ -14,19 +14,19 @@ router.get('/stats', function(req, res, next) {
   var playerId = 0;
   var sliceIndex = str.indexOf(' ');
   if (sliceIndex >= 0) {
-    var firstName = str.slice(0, sliceIndex);
-    var lastName = str.slice(sliceIndex + 1);
+    var firstName = str.slice(0, sliceIndex).toLowerCase();
+    var lastName = str.slice(sliceIndex + 1).toLowerCase();
   } else {
-    var lastName = str;
+    var lastName = str.toLowerCase();
   }
   for (var i = 0; i < playerMap.length; i++) {
     var currentPlayer = playerMap[i];
     if (sliceIndex >= 0) {
-      if (currentPlayer.firstName.toLowerCase() === firstName.toLowerCase() && currentPlayer.lastName.toLowerCase() === lastName.toLowerCase()) {
+      if (currentPlayer.firstName.toLowerCase() === firstName && currentPlayer.lastName.toLowerCase() === lastName) {
         var playerId = currentPlayer.playerId;
       }
     } else {
-      if (currentPlayer.lastName.toLowerCase() === lastName.toLowerCase()) {
+      if (currentPlayer.lastName.toLowerCase() === lastName) {
         var playerId = currentPlayer.playerId;
       }
     }
@@ -39,7 +39,7 @@ router.get('/stats', function(req, res, next) {
       //  res.send(data.overviewSeasonAvg[0]);
       //  //res.redirect('/')
       //});
-      nba.api.playerProfile({playerId: playerId}, function(err, data) {
+      nba.api.playerProfile({playerId: playerId}, function(err, data) { //add here season: '2010-11'
         nba.api.playerInfo({playerId: playerId}, function(err, info) {
           //console.log(data.overviewSeasonAvg, info.commonPlayerInfo[0]);
           res.send({playerInfo: info.commonPlayerInfo[0], playerProfile: data.overviewSeasonAvg[0]});

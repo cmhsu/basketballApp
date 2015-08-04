@@ -17,8 +17,10 @@ angular.module('myApp.view1', ['ngRoute'])
         $scope.profile = data.playerProfile;
         if (data.playerInfo != undefined) {
           $scope.id = data.playerInfo.personId;
+          //$scope.teamId = data.playerInfo.teamId;
         } else {
           $scope.id = undefined;
+          //$scope.teamId = undefined;
         }
         $scope.idExists = !!$scope.id ? true : false;
       });
@@ -26,4 +28,6 @@ angular.module('myApp.view1', ['ngRoute'])
     };
 
   });
+
+
 

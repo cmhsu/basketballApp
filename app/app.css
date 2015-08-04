@@ -28,3 +28,16 @@
   content: "";
   padding: 0;
 }
+
+.info {
+  float: right;
+  width: 70%;
+  /*display: inline-block;*/
+  /*clear: right;*/
+}
+
+.img {
+  float: left;
+  width: 30%;
+  /*display: inline;*/
+}
