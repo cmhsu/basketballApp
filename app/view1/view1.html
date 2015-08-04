@@ -156,13 +156,102 @@
       </tr>
     </table>
 
+    <table class="table table-striped table-hover table-bordered">
+      <tr>
+        <td>{{teamStats.teamName}}</td>
+        <td>GP</td>
+        <td>W</td>
+        <td>L</td>
+        <td>MIN</td>
+        <td>FGM</td>
+        <td>FGA</td>
+        <td>FG%</td>
+        <td>3PM</td>
+        <td>3PA</td>
+        <td>3P%</td>
+        <td>FTM</td>
+        <td>FTA</td>
+        <td>FT%</td>
+        <td>ORB</td>
+        <td>DRB</td>
+        <td>TRB</td>
+        <td>AST</td>
+        <td>TOV</td>
+        <td>STL</td>
+        <td>BLK</td>
+        <td>BLKA</td>
+        <td>PF</td>
+        <td>+-</td>
+        <td>PTS</td>
+      </tr>
+
+      <tr>
+        <td>2014-2015</td>
+        <td>{{teamStats.gP}}</td>
+        <td>{{teamStats.w}}</td>
+        <td>{{teamStats.l}}</td>
+        <td>{{teamStats.mIN}}</td>
+        <td>{{teamStats.fGM}}</td>
+        <td>{{teamStats.fGA}}</td>
+        <td>{{teamStats.fgPct}}</td>
+        <td>{{teamStats.fG3M}}</td>
+        <td>{{teamStats.fG3A}}</td>
+        <td>{{teamStats.fg3Pct}}</td>
+        <td>{{teamStats.fTM}}</td>
+        <td>{{teamStats.fTA}}</td>
+        <td>{{teamStats.ftPct}}</td>
+        <td>{{teamStats.oREB}}</td>
+        <td>{{teamStats.dREB}}</td>
+        <td>{{teamStats.rEB}}</td>
+        <td>{{teamStats.aST}}</td>
+        <td>{{teamStats.tOV}}</td>
+        <td>{{teamStats.sTL}}</td>
+        <td>{{teamStats.bLK}}</td>
+        <td>{{teamStats.bLKA}}</td>
+        <td>{{teamStats.pF}}</td>
+        <td>{{teamStats.plusMinus}}</td>
+        <td>{{teamStats.pTS}}</td>
+      </tr>
+
+      <tr>
+        <td>2013-2014</td>
+        <td>{{teamStatsTwo.gP}}</td>
+        <td>{{teamStatsTwo.w}}</td>
+        <td>{{teamStatsTwo.l}}</td>
+        <td>{{teamStatsTwo.mIN}}</td>
+        <td>{{teamStatsTwo.fGM}}</td>
+        <td>{{teamStatsTwo.fGA}}</td>
+        <td>{{teamStatsTwo.fgPct}}</td>
+        <td>{{teamStatsTwo.fG3M}}</td>
+        <td>{{teamStatsTwo.fG3A}}</td>
+        <td>{{teamStatsTwo.fg3Pct}}</td>
+        <td>{{teamStatsTwo.fTM}}</td>
+        <td>{{teamStatsTwo.fTA}}</td>
+        <td>{{teamStatsTwo.ftPct}}</td>
+        <td>{{teamStatsTwo.oREB}}</td>
+        <td>{{teamStatsTwo.dREB}}</td>
+        <td>{{teamStatsTwo.rEB}}</td>
+        <td>{{teamStatsTwo.aST}}</td>
+        <td>{{teamStatsTwo.tOV}}</td>
+        <td>{{teamStatsTwo.sTL}}</td>
+        <td>{{teamStatsTwo.bLK}}</td>
+        <td>{{teamStatsTwo.bLKA}}</td>
+        <td>{{teamStatsTwo.pF}}</td>
+        <td>{{teamStatsTwo.plusMinus}}</td>
+        <td>{{teamStatsTwo.pTS}}</td>
+      </tr>
+
+
+    </table>
+
+
     <!--{{ info }}-->
     <!--<br><br>-->
     <!--{{ profile }}-->
     {{test}}
-    <h3 class="chart-header">Points scored in last {{numGames}} games</h3>
+    <h3 class="chart-header">{{info.lastName}}: Points scored in last {{numGames}} games</h3>
     <form ng-submit="displayChart(data)" class="form-inline col-md-offset-4">
-      <input ng-model="numGames" class="form-control numGamesInput">
+      <input type="number" ng-model="numGames" class="form-control numGamesInput">
       <button type="submit" class="btn btn-default">Change number of games</button>
     </form>
 
@@ -172,9 +261,9 @@
     </div>
 
 
-    <h3 class="chart-header">Plus-Minus in last {{numGamesTwo}} games</h3>
+    <h3 class="chart-header">{{info.lastName}}: Plus-Minus in last {{numGamesTwo}} games</h3>
     <form ng-submit="displayChart(data, 'contentTwo')" class="form-inline col-md-offset-4">
-      <input ng-model="numGamesTwo" class="form-control numGamesInput">
+      <input type="number" ng-model="numGamesTwo" class="form-control numGamesInput">
       <button type="submit" class="btn btn-default">Change number of games</button>
     </form>
 

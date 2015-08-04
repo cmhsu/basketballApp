@@ -34,42 +34,44 @@ router.get('/stats', function(req, res, next) {
   nba.ready(function() {
     console.log('nba api is working.');
     if (playerId != 0) {
-      //nba.api.playerProfile({playerId: playerId}, function(err, data) {
-      //  console.log(JSON.stringify(data.overviewSeasonAvg[0]));
-      //  res.send(data.overviewSeasonAvg[0]);
-      //  //res.redirect('/')
-      //});
       nba.api.playerProfile({playerId: playerId}, function(err, data) { //add here season: '2010-11'
         nba.api.playerInfo({playerId: playerId}, function(err, info) {
           var years = info.commonPlayerInfo[0].seasonExp;
-          if (years > 1) {
-            nba.api.playerProfile({playerId: playerId, season: '2013-14'}, function(err, dataTwo) {
-              console.log(data.gameLogs.length);
-              res.send({
-                playerInfo: info.commonPlayerInfo[0],
-                playerProfile: data.overviewSeasonAvg[0],
-                careerAvg: data.overviewCareerAvg[0],
-                dataTwo: dataTwo.overviewSeasonAvg[0],
-                pointsPerGame: dataTwo.graphGameList,
-                gameLogs: data.gameLogs
-              });
+          nba.api.teamStats({season: '2014-15'}, function(err, teamStats) {
+            nba.api.teamStats({season: '2013-14'}, function(err, teamStatsTwo) {
+              if (years > 1) {
+                nba.api.playerProfile({playerId: playerId, season: '2013-14'}, function (err, dataTwo) {
+                  res.send({
+                    playerInfo: info.commonPlayerInfo[0],
+                    playerProfile: data.overviewSeasonAvg[0],
+                    careerAvg: data.overviewCareerAvg[0],
+                    dataTwo: dataTwo.overviewSeasonAvg[0],
+                    pointsPerGame: dataTwo.graphGameList,
+                    gameLogs: data.gameLogs,
+                    teamStats: teamStats,
+                    teamStatsTwo: teamStatsTwo
+                  });
+                })
+              } else {
+                res.send({
+                  playerInfo: info.commonPlayerInfo[0],
+                  playerProfile: data.overviewSeasonAvg[0],
+                  careerAvg: data.overviewCareerAvg[0],
+                  pointsPerGame: data.graphGameList,
+                  gameLogs: data.gameLogs,
+                  teamStats: teamStats,
+                  teamStatsTwo: teamStatsTwo
+                });
+              }
             })
-          } else { //if years <= 1
-            res.send({
-              playerInfo: info.commonPlayerInfo[0],
-              playerProfile: data.overviewSeasonAvg[0],
-              careerAvg: data.overviewCareerAvg[0],
-              pointsPerGame: data.graphGameList,
-              gameLogs: data.gameLogs
-            });
-          }
-
+          })
         });
       });
 
-      nba.api.playersInfo({}, function(err, data) { //experimenting and testing
-        //console.log(data);
-      })
+      nba.api.teamStats(function (err, response) {
+        console.log(response);
+      });
+
     } else {
       res.send('Please choose a valid player');
     }

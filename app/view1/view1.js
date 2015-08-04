@@ -156,23 +156,28 @@ angular.module('myApp.view1', ['ngRoute'])
       getPlayers.get(query).success(function(data) {
         //var stats = data.overviewSeasonAvg[0];
         $scope.data = data;
+        $scope.allTeamStats = data.teamStats;
+        $scope.allTeamStatsTwo = data.teamStatsTwo;
         $scope.info = data.playerInfo;
+        $scope.teamId = 0;
         $scope.profile = data.playerProfile;
         $scope.careerAvg = data.careerAvg;
         $scope.dataTwo = data.dataTwo || undefined;
         $scope.numGames = 100;
         $scope.numGamesTwo = 10;
         //$scope.pointsPerGame = data.pointsPerGame;
+        for (var i = 0; i < data.teamStats.length; i++) {
+          if (data.teamStats[i].teamId === data.playerInfo.teamId) {
+            $scope.teamId = data.playerInfo.teamId;
+            $scope.teamStats = data.teamStats[i];
+            $scope.teamStatsTwo = data.teamStatsTwo[i];
+          }
+        }
 
         if (data.playerInfo != undefined) {
           $scope.id = data.playerInfo.personId;
           $scope.displayChart(data);
           $scope.displayChart(data, true);
-          //$window.pointsPerGame = pointsArray;
-
-          //D3//////////////////////////////////////////////////////////////
-
-
         } else {
           $scope.id = undefined;
         }
