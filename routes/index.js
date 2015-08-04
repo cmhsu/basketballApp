@@ -5,7 +5,7 @@ var playerMap = require('../node_modules/nba/data/players.json');
 var app = require('../app.js');
 var fs = require('fs');
 
-/* GET home page. */
+/* GET stats. */
 router.get('/stats', function(req, res, next) {
   var str = '';
   for (var key in req.query) {
@@ -44,12 +44,14 @@ router.get('/stats', function(req, res, next) {
           var years = info.commonPlayerInfo[0].seasonExp;
           if (years > 1) {
             nba.api.playerProfile({playerId: playerId, season: '2013-14'}, function(err, dataTwo) {
+              console.log(data.gameLogs.length);
               res.send({
                 playerInfo: info.commonPlayerInfo[0],
                 playerProfile: data.overviewSeasonAvg[0],
                 careerAvg: data.overviewCareerAvg[0],
                 dataTwo: dataTwo.overviewSeasonAvg[0],
-                pointsPerGame: dataTwo.graphGameList
+                pointsPerGame: dataTwo.graphGameList,
+                gameLogs: data.gameLogs
               });
             })
           } else { //if years <= 1
@@ -57,15 +59,16 @@ router.get('/stats', function(req, res, next) {
               playerInfo: info.commonPlayerInfo[0],
               playerProfile: data.overviewSeasonAvg[0],
               careerAvg: data.overviewCareerAvg[0],
-              pointsPerGame: data.graphGameList
+              pointsPerGame: data.graphGameList,
+              gameLogs: data.gameLogs
             });
           }
 
         });
       });
 
-      nba.api.playerProfile({playerId: playerId}, function(err, data) { //experimenting and testing
-        console.log(data.graphGameList);
+      nba.api.playersInfo({}, function(err, data) { //experimenting and testing
+        //console.log(data);
       })
     } else {
       res.send('Please choose a valid player');
