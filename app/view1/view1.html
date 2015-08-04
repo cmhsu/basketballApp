@@ -1,4 +1,5 @@
 <!--TODO: put team picture. get team ID-->
+<!--TODO: add number validation for number of games input-->
 <div class="container col-md-8 col-md-offset-2">
   <h1>BasketStat</h1>
 
@@ -159,7 +160,12 @@
     <!--<br><br>-->
     <!--{{ profile }}-->
     {{test}}
-    <h3 class="chart-header">Points scored in last 100 games</h3>
+    <h3 class="chart-header">Points scored in last {{numGames}} games</h3>
+    <form ng-submit="displayChart(data)" class="form-inline col-md-offset-4">
+      <input ng-model="numGames" class="form-control numGamesInput">
+      <button type="submit" class="btn btn-default">Change number of games</button>
+    </form>
+
     <div class='content'>
       <!-- /the chart goes here -->
     </div>
