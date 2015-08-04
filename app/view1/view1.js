@@ -112,7 +112,7 @@ angular.module('myApp.view1', ['ngRoute'])
       main.append("text")
         .attr("transform", "translate(" + (width / 2) + " ," + (height + margin.bottom/1.5) + ")")
         .style("text-anchor", "middle")
-        .text("Game Number");
+        .text("Game Number").style("font-size", 16);
 
       // draw the y axis
       var yAxis = d3.svg.axis()
@@ -131,7 +131,7 @@ angular.module('myApp.view1', ['ngRoute'])
           .attr("x",0 - (height / 2))
           .attr("dy", "1em")
           .style("text-anchor", "middle")
-          .text("Points Scored");
+          .text("Points Scored").style("font-size", 16);
       } else {
         main.append("text")
           .attr("transform", "rotate(-90)")
@@ -139,7 +139,7 @@ angular.module('myApp.view1', ['ngRoute'])
           .attr("x",0 - (height / 2))
           .attr("dy", "1em")
           .style("text-anchor", "middle")
-          .text("Plus-Minus");
+          .text("Plus-Minus").style("font-size", 16);
       }
 
       var g = main.append("svg:g");
