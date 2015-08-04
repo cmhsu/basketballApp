@@ -1,11 +1,12 @@
 <p>This is the partial for view 1.</p>
 
 <form method="get" ng-submit="getData(query)">
-  <input type="text" name="name" ng-model="query">
+  <input type="text" name="name" ng-model="query" autofocus>
   <button type="submit">Submit</button>
 </form>
 
-
-{{ data }}
-
+{{ info }}
+<br>
+{{ profile }}
+<img src="http://stats.nba.com/media/players/230x185/{{id}}.png" ng-show="idExists">
 

@@ -12,9 +12,18 @@ angular.module('myApp.view1', ['ngRoute'])
   .controller('View1Ctrl', function($scope, getPlayers, $window) {
     $scope.getData = function(query) {
       getPlayers.get(query).success(function(data) {
-        $scope.data = data;
+        //var stats = data.overviewSeasonAvg[0];
+        $scope.info = data.playerInfo;
+        $scope.profile = data.playerProfile;
+        if (data.playerInfo != undefined) {
+          $scope.id = data.playerInfo.personId;
+        } else {
+          $scope.id = undefined;
+        }
+        $scope.idExists = !!$scope.id ? true : false;
       });
 
     };
 
   });
+
