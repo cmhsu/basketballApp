@@ -41,10 +41,32 @@ router.get('/stats', function(req, res, next) {
       //});
       nba.api.playerProfile({playerId: playerId}, function(err, data) { //add here season: '2010-11'
         nba.api.playerInfo({playerId: playerId}, function(err, info) {
-          //console.log(data.overviewSeasonAvg, info.commonPlayerInfo[0]);
-          res.send({playerInfo: info.commonPlayerInfo[0], playerProfile: data.overviewSeasonAvg[0]});
+          var years = info.commonPlayerInfo[0].seasonExp;
+          if (years > 1) {
+            nba.api.playerProfile({playerId: playerId, season: '2013-14'}, function(err, dataTwo) {
+              res.send({
+                playerInfo: info.commonPlayerInfo[0],
+                playerProfile: data.overviewSeasonAvg[0],
+                careerAvg: data.overviewCareerAvg[0],
+                dataTwo: dataTwo.overviewSeasonAvg[0],
+                pointsPerGame: dataTwo.graphGameList
+              });
+            })
+          } else { //if years <= 1
+            res.send({
+              playerInfo: info.commonPlayerInfo[0],
+              playerProfile: data.overviewSeasonAvg[0],
+              careerAvg: data.overviewCareerAvg[0],
+              pointsPerGame: data.graphGameList
+            });
+          }
+
         });
       });
+
+      nba.api.playerProfile({playerId: playerId}, function(err, data) { //experimenting and testing
+        console.log(data.graphGameList);
+      })
     } else {
       res.send('Please choose a valid player');
     }

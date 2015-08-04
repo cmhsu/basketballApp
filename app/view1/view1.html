@@ -2,12 +2,12 @@
 <div class="container col-md-8 col-md-offset-2">
   <h1>BasketStat</h1>
 
-  <form method="get" ng-submit="getData(query)">
+  <form method="get" ng-submit="getData(query)" class="form-inline">
     <div class="form-group">
       <input type="text" class="form-control" name="name" ng-model="query" autofocus placeholder="Enter your favorite player here" size="30">
       <button type="submit" class="btn btn-default">Submit</button>
     </div>
-  </form>
+  </form><br>
 
   <div ng-show="idExists">
     <!--<span>-->
@@ -70,6 +70,34 @@
         <td>PTS</td>
       </tr>
 
+      <tr ng-show="dataTwo">
+        <td>2013-2014</td>
+        <td>{{dataTwo.gP}}</td>
+        <td>{{dataTwo.w}}</td>
+        <td>{{dataTwo.l}}</td>
+        <td>{{dataTwo.mIN}}</td>
+        <td>{{dataTwo.fGM}}</td>
+        <td>{{dataTwo.fGA}}</td>
+        <td>{{dataTwo.fgPct}}</td>
+        <td>{{dataTwo.fG3M}}</td>
+        <td>{{dataTwo.fG3A}}</td>
+        <td>{{dataTwo.fg3Pct}}</td>
+        <td>{{dataTwo.fTM}}</td>
+        <td>{{dataTwo.fTA}}</td>
+        <td>{{dataTwo.ftPct}}</td>
+        <td>{{dataTwo.oREB}}</td>
+        <td>{{dataTwo.dREB}}</td>
+        <td>{{dataTwo.rEB}}</td>
+        <td>{{dataTwo.aST}}</td>
+        <td>{{dataTwo.tOV}}</td>
+        <td>{{dataTwo.sTL}}</td>
+        <td>{{dataTwo.bLK}}</td>
+        <td>{{dataTwo.bLKA}}</td>
+        <td>{{dataTwo.pF}}</td>
+        <td>{{dataTwo.plusMinus}}</td>
+        <td>{{dataTwo.pTS}}</td>
+      </tr>
+
       <tr>
         <td>2014-2015</td>
         <td>{{profile.gP}}</td>
@@ -96,13 +124,48 @@
         <td>{{profile.pF}}</td>
         <td>{{profile.plusMinus}}</td>
         <td>{{profile.pTS}}</td>
+      </tr>
 
+      <tr>
+        <td>Career Avg</td>
+        <td>{{careerAvg.gP}}</td>
+        <td>{{careerAvg.w}}</td>
+        <td>{{careerAvg.l}}</td>
+        <td>{{careerAvg.mIN}}</td>
+        <td>{{careerAvg.fGM}}</td>
+        <td>{{careerAvg.fGA}}</td>
+        <td>{{careerAvg.fgPct}}</td>
+        <td>{{careerAvg.fG3M}}</td>
+        <td>{{careerAvg.fG3A}}</td>
+        <td>{{careerAvg.fg3Pct}}</td>
+        <td>{{careerAvg.fTM}}</td>
+        <td>{{careerAvg.fTA}}</td>
+        <td>{{careerAvg.ftPct}}</td>
+        <td>{{careerAvg.oREB}}</td>
+        <td>{{careerAvg.dREB}}</td>
+        <td>{{careerAvg.rEB}}</td>
+        <td>{{careerAvg.aST}}</td>
+        <td>{{careerAvg.tOV}}</td>
+        <td>{{careerAvg.sTL}}</td>
+        <td>{{careerAvg.bLK}}</td>
+        <td>{{careerAvg.bLKA}}</td>
+        <td>{{careerAvg.pF}}</td>
+        <td>{{careerAvg.plusMinus}}</td>
+        <td>{{careerAvg.pTS}}</td>
       </tr>
     </table>
 
     <!--{{ info }}-->
     <!--<br><br>-->
     <!--{{ profile }}-->
+    {{test}}
+    <h3 class="chart-header">Points scored in last 100 games</h3>
+    <div class='content'>
+      <!-- /the chart goes here -->
+    </div>
+
+
+  {{pointsPerGame}}
   </div>
 
 </div>
