@@ -27,7 +27,8 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'app')));
+//app.use(express.static(path.join(__dirname, 'app')));
+app.use(express.static(__dirname + '/app'));
 
 app.use('/', routes);
 app.use('/stats', routes);
@@ -64,5 +65,7 @@ app.use('/stats', routes);
 ////  });
 //});
 
-app.listen(8000);
+app.listen(process.env.PORT || 3000);
+
+
 module.exports = app;
